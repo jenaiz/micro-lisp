@@ -44,6 +44,7 @@ enum { LVAL_NUM, LVAL_ERR};
 enum { LERR_DIV_ZERO, LERR_BAD_OP, LERR_BAD_NUM};
 
 
+void init();
 lval lval_num(long x);
 lval lval_err(int x);
 void lval_print(lval v);
@@ -69,10 +70,7 @@ int main(int argc, char** argv) {
       microlisp : /^/ <operator> <expr>+ /$/ ;            \
     ",
     Number, Operator, Expr, Microlisp);
-
-  puts("µLisp v0.0.1");
-  puts("[Apple LLVM version 5.1 (clang-503.0.38) (based on LLVM 3.4svn)]");
-  puts("Ctrl + c to exit.");
+  init();
   
   while(1) {
     char* input = readline("µL >> ");
@@ -100,6 +98,11 @@ int main(int argc, char** argv) {
 }
 
 /* functions... */
+void init() {
+  puts("µLisp v0.0.1");
+  puts("Ctrl + c to exit.");
+}
+
 lval lval_num(long x) {
   lval v;
   v.type = LVAL_NUM;
