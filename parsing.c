@@ -31,36 +31,6 @@ void add_history(char* unused) {}
 
 #endif
 
-/* Use operator string to see which operation to perform */
-long eval_op(long x, char* op, long y) {
-  if (strcmp(op, "+") == 0) { return x + y; }
-  if (strcmp(op, "-") == 0) { return x - y; }
-  if (strcmp(op, "*") == 0) { return x * y; }
-  if (strcmp(op, "/") == 0) { return x / y; }
-  return 0;
-}
-
-long eval(mpc_ast_t* t) {
-  
-  /* If tagged as number return it directly, otherwise expression. */ 
-  if (strstr(t->tag, "number")) { return atoi(t->contents); }
-  
-  /* The operator is always second child. */
-  char* op = t->children[1]->contents;
-  
-  /* We store the third child in `x` */
-  long x = eval(t->children[2]);
-  
-  /* Iterate the remaining children, combining using our operator */
-  int i = 3;
-  while (strstr(t->children[i]->tag, "expr")) {
-    x = eval_op(x, op, eval(t->children[i]));
-    i++;
-  }
-  
-  return x;
-}
-
 typedef struct {
   int type;
   long num;
@@ -82,7 +52,7 @@ lval lval_num(long x) {
 
 lval lval_err(int x) {
   lval v;
-  v.type = LVAL_ERROR;
+  v.type = LVAL_ERR;
   v.num = x;
   return v;
 }
@@ -97,6 +67,48 @@ void lval_print(lval v) {
       if (v.err == LERR_BAD_NUM)  { printf("Error: Invalid Number!"); }
     break;
   }
+}
+
+/* Use operator string to see which operation to perform */
+lval eval_op(lval x, char* op, lval y) {
+
+  if (x.type == LVAL_ERR) { return x; }
+  if (y.type == LVAL_ERR) { return y; }
+
+  if (strcmp(op, "+") == 0) { return lval_num(x.num + y.num); }
+  if (strcmp(op, "-") == 0) { return lval_num(x.num - y.num); }
+  if (strcmp(op, "*") == 0) { return lval_num(x.num * y.num); }
+  if (strcmp(op, "/") == 0) { 
+    return y.num == 0? lval_err(LERR_DIV_ZERO) : lval_num(x.num / y.num); 
+  }
+  
+  return lval_err(LERR_BAD_OP);
+}
+
+lval eval(mpc_ast_t* t) {
+  
+  /* If tagged as number return it directly, otherwise expression. */ 
+  if (strstr(t->tag, "number")) { 
+    errno = 0;
+    long x = strtol(t->contents, NULL, 10);
+
+    return errno != ERANGE ? lval_num(x) : lval_err(LERR_BAD_NUM); 
+  }
+  
+  /* The operator is always second child. */
+  char* op = t->children[1]->contents;
+  
+  /* We store the third child in `x` */
+  lval x = eval(t->children[2]);
+  
+  /* Iterate the remaining children, combining using our operator */
+  int i = 3;
+  while (strstr(t->children[i]->tag, "expr")) {
+    x = eval_op(x, op, eval(t->children[i]));
+    i++;
+  }
+  
+  return x;
 }
 
 void lval_println(lval v) { lval_print(v); putchar('\n'); }
@@ -134,8 +146,8 @@ int main(int argc, char** argv) {
     if (mpc_parse("<stdin>", input, Microlisp, &r)) {
       //mpc_ast_print(r.output); // print an Abstract Syntax Tree
       
-      long result = eval(r.output);
-      printf("%li\n", result);
+      lval result = eval(r.output);
+      lval_println(result);
       
       /*mpc_ast_t* a = r.output;
       printf("Tag: %s\n", a->tag);
