@@ -1,3 +1,4 @@
+cc -std=c99 -Wall read_file.c mpc.c -ledit -lm -o read_file
 #cc -std=c99 -Wall prompt.c -ledit -o prompt
 #cc -std=c99 -Wall doge.c mpc.c -ledit -lm -o doge
 #cc -std=c99 -Wall doge_grammar.c mpc.c -ledit -lm -o doge_grammar
