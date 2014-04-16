@@ -21,6 +21,7 @@
 *.i*86
 *.x86_64
 *.hex
+bin/
 prompt
 doge
 doge_grammar
@@ -30,3 +31,4 @@ parsing
 s_expressions
 q_expressions
 read_file
+help
