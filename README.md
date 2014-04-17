@@ -9,18 +9,20 @@ I would like to extend the code after finish the tutorial, for now I am enjoying
 
 Jesús.
 
-Versions
---------
-v.0.0.5 (IN PROGRESS)
+Release Changelog
+-----------------
 
-v.0.0.4 (q_expressions.c)
- - include symbols
+**v.0.0.5 (IN PROGRESS)**
+
+**v.0.0.4**
+source: *q_expressions.c*
  - included variables 
 
-v.0.0.3
-  s_expressions.c ...
-v.0.0.2
-  parsing.c ...
-v.0.0.1
-  prompt.c
-  polish_notation.c
+**v.0.0.3**
+source: *s_expressions.c*
+
+**v.0.0.2**
+source: *parsing.c*
+
+**v.0.0.1**
+source: *prompt.c, polish_notation.c*
