@@ -129,7 +129,7 @@ int main(int argc, char** argv) {
 
 /* functions... */
 void init() {
-  puts("µLisp v0.0.1");
+  puts("µLisp v0.0.3");
   puts("Ctrl + c to exit.");
 }
 
