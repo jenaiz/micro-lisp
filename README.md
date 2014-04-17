@@ -1,5 +1,5 @@
-micro-lisp (µLisp)
-==================
+µLisp
+=====
 
 µLisp is Lisp interpreter using C. The idea started from the tutorial: [Build your own Lisp](http://buildyourownlisp.com).
 
