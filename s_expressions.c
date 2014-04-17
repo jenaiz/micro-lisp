@@ -220,8 +220,6 @@ lval* lval_take(lval* v, int i) {
   return x;
 }
 
-void lval_print(lval* v);
-
 void lval_expr_print(lval* v, char open, char close) {
   putchar(open);
   for (int i = 0; i < v->count; i++) {
@@ -292,8 +290,6 @@ lval* builtin_op(lval* a, char* op) {
   lval_del(a);
   return x;
 }
-
-lval* lval_eval(lval* v);
 
 lval* lval_eval_sexpr(lval* v) {
   
