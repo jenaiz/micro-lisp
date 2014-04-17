@@ -22,13 +22,4 @@
 *.x86_64
 *.hex
 bin/
-prompt
-doge
-doge_grammar
-hello_world
-polish_notation
-parsing
-s_expressions
-q_expressions
-read_file
-help
+mlisp
