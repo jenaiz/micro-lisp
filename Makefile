@@ -13,7 +13,7 @@ all: clean $(SOURCES) mlisp
 	
 mlisp:
 	rm -rf mlisp
-	$(CC) $(CFLAGS) functions.c $(LIBS) $(LFLAGS) -o mlisp
+	$(CC) $(CFLAGS) conditionals.c $(LIBS) $(LFLAGS) -o mlisp
 
 clean:
 	rm -rf bin
