@@ -12,6 +12,7 @@ all: clean $(SOURCES) mlisp
 	$(CC) $(CFLAGS) $^ $(LIBS) $(LFLAGS) -o bin/$@
 	
 mlisp:
+	rm -rf mlisp
 	$(CC) $(CFLAGS) functions.c $(LIBS) $(LFLAGS) -o mlisp
 
 clean:
