@@ -90,7 +90,7 @@ int main(int argc, char** argv) {
   mpc_parser_t* Microlisp = mpc_new("microlisp");
 
   /* Define them with the following Language */
-  mpca_lang(MPC_LANG_DEFAULT,
+  mpca_lang(MPCA_LANG_DEFAULT,
     "                                                     \
       number    : /-?[0-9]+/ ;                             \
       symbol    : '+' | '-' | '*' | '/' ;                  \
