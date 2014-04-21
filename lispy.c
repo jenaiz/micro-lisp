@@ -1,38 +1,25 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "mpc.h"
 
 #ifdef _WIN32
 
-  #include <string.h>
+static char buffer[2048];
 
-  static char buffer[2048];
+char* readline(char* prompt) {
+  fputs(prompt, stdout);
+  fgets(buffer, 2048, stdin);
+  char* cpy = malloc(strlen(buffer)+1);
+  strcpy(cpy, buffer);
+  cpy[strlen(cpy)-1] = '\0';
+  return cpy;
+}
 
-  /* Fake readline function */
-  char* readline(char* prompt) {
-    fputs(prompt, stdout);
-    fgets(buffer, 2048, stdin);
-    char* cpy = malloc(strlen(buffer)+1);
-    strcpy(cpy, buffer);
-
-    cpy[strlen(ctr)-1] = '\0';
-    
-    return cpy;
-  }
-
-  /* Fake add_history function */
-  void add_history(char* unused) {}
+void add_history(char* unused) {}
 
 #else
 
-  #include <editline/readline.h>
+#include <editline/readline.h>
 
 #endif
-
-void init() {
-  puts("µLisp v0.0.9");
-  puts("Ctrl + c to exit.");
-}
 
 /* Parser Declariations */
 
@@ -43,7 +30,7 @@ mpc_parser_t* Comment;
 mpc_parser_t* Sexpr;  
 mpc_parser_t* Qexpr;  
 mpc_parser_t* Expr; 
-mpc_parser_t* Microlisp;
+mpc_parser_t* Lispy;
 
 /* Forward Declarations */
 
@@ -292,7 +279,7 @@ int lval_eq(lval* x, lval* y) {
     case LVAL_ERR: return (strcmp(x->err, y->err) == 0);
     case LVAL_SYM: return (strcmp(x->sym, y->sym) == 0);    
     case LVAL_STR: return (strcmp(x->str, y->str) == 0);    
-    case LVAL_FUN:
+    case LVAL_FUN: 
       if (x->builtin || y->builtin) {
         return x->builtin == y->builtin;
       } else {
@@ -504,7 +491,7 @@ lval* builtin_op(lenv* e, lval* a, char* op) {
     if (strcmp(op, "-") == 0) { x->num -= y->num; }
     if (strcmp(op, "*") == 0) { x->num *= y->num; }
     if (strcmp(op, "/") == 0) {
-      if (y->num == 0) {
+      if (y->num != 0) {
         lval_del(x); lval_del(y);
         x = lval_err("Division By Zero.");
         break;
@@ -609,7 +596,7 @@ lval* builtin_load(lenv* e, lval* a) {
   
   /* Parse File given by string name */
   mpc_result_t r;
-  if (mpc_parse_contents(a->cell[0]->str, Microlisp, &r)) {
+  if (mpc_parse_contents(a->cell[0]->str, Lispy, &r)) {
     
     /* Read contents */
     lval* expr = lval_read(r.output);
@@ -700,7 +687,7 @@ void lenv_add_builtins(lenv* e) {
   
   /* String Functions */
   lenv_add_builtin(e, "load", builtin_load); 
-  lenv_add_builtin(e, "error", builtin_error); lenv_add_builtin(e, "print", builtin_print); 
+  lenv_add_builtin(e, "error", builtin_error); lenv_add_builtin(e, "print", builtin_print);
 }
 
 /* Evaluation */
@@ -844,9 +831,10 @@ lval* lval_read(mpc_ast_t* t) {
   return x;
 }
 
-int main(int argc, char** argv) {  
+/* Main */
 
-  /* Create Some Parsers */
+int main(int argc, char** argv) {
+  
   Number  = mpc_new("number");
   Symbol  = mpc_new("symbol");
   String  = mpc_new("string");
@@ -854,9 +842,8 @@ int main(int argc, char** argv) {
   Sexpr   = mpc_new("sexpr");
   Qexpr   = mpc_new("qexpr");
   Expr    = mpc_new("expr");
-  Microlisp = mpc_new("microlisp");
-
-  /* Define them with the following Language */
+  Lispy   = mpc_new("lispy");
+  
   mpca_lang(MPCA_LANG_DEFAULT,
     "                                              \
       number  : /-?[0-9]+/ ;                       \
@@ -867,24 +854,26 @@ int main(int argc, char** argv) {
       qexpr   : '{' <expr>* '}' ;                  \
       expr    : <number>  | <symbol> | <string>    \
               | <comment> | <sexpr>  | <qexpr>;    \
-      microlisp  : /^/ <expr>* /$/ ;               \
+      lispy   : /^/ <expr>* /$/ ;                  \
     ",
-    Number, Symbol, String, Comment, Sexpr, Qexpr, Expr, Microlisp);
+    Number, Symbol, String, Comment, Sexpr, Qexpr, Expr, Lispy);
+  
   lenv* e = lenv_new();
   lenv_add_builtins(e);
-
+  
   /* Interactive Prompt */
   if (argc == 1) {
   
-    init();
+    puts("Lispy Version 0.0.0.1.0");
+    puts("Press Ctrl+c to Exit\n");
   
     while (1) {
     
-      char* input = readline("µL >> ");
+      char* input = readline("lispy> ");
       add_history(input);
       
       mpc_result_t r;
-      if (mpc_parse("<stdin>", input, Microlisp, &r)) {
+      if (mpc_parse("<stdin>", input, Lispy, &r)) {
         
         lval* x = lval_eval(e, lval_read(r.output));
         lval_println(x);
@@ -921,7 +910,7 @@ int main(int argc, char** argv) {
   
   lenv_del(e);
   
-  mpc_cleanup(8, Number, Symbol, String, Comment, Sexpr, Qexpr, Expr, Microlisp);
+  mpc_cleanup(8, Number, Symbol, String, Comment, Sexpr, Qexpr, Expr, Lispy);
   
   return 0;
 }
