@@ -4,7 +4,7 @@ CC=cc
 CFLAGS=-std=c99 -Wall
 LFLAGS=-ledit -lm
 LIBS=mpc.c
-SOURCES=hello_world prompt doge doge_grammar polish_notation parsing s_expressions q_expressions read_file help functions conditionals
+SOURCES=hello_world prompt doge doge_grammar polish_notation parsing s_expressions q_expressions read_file help functions conditionals lispy
 
 all: clean $(SOURCES) mlisp
 
