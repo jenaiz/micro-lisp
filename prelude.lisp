@@ -1,5 +1,5 @@
 ;;;
-;;;   Lispy Standard Prelude
+;;;   µLisp Standard Prelude
 ;;;
 
 ;;; Atoms
