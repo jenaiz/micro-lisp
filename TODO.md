@@ -1,15 +1,15 @@
 - [x] read chapters 11
-- [ ] read chapters 12
-- [ ] read chapters 13
-- [ ] read chapters 14
-- [ ] read chapters 15
-- [ ] read chapters 16
+- [X] read chapters 12
+- [X] read chapters 13
+- [X] read chapters 14
+- [X] read chapters 15
+- [X] read chapters 16
 - [ ] extract a library from the big file ??
 - [ ] prompt:
 	- [ ] exit command
 	- [ ] help command
 	- [ ] read more than one line for code
-- [ ] use read_file and help samples
+
 - [ ] investigate more about parsers
 - [ ] investigate about garbage collector
 - [ ] improve the enviroment (notes in chapter...)
