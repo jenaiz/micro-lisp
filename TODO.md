@@ -11,5 +11,20 @@
 	- [ ] read more than one line for code
 
 - [ ] investigate more about parsers
-- [ ] investigate about garbage collector
-- [ ] improve the enviroment (notes in chapter...)
+- [ ] improve how the enviroment works
+
+- [ ] add natives types: double... and operations for those types
+- [ ] add user defined types
+- [ ] create list using square brackets: []
+- [ ] Integration with system operative:
+	- [ ] allow read & write from system
+	- [ ] allow to use directories or see the content within a directory
+- [ ] define macros
+- [ ] include an implementation of hashtable
+- [ ] pool allocation: allocate memory in the startup of the interpreter (avoid the uses of malloc in almost all the case)
+- [ ] garbage collection: introduce a simple algorithm for garbage collection: Mark & Sweep
+- [ ] tail call optimisation: ...
+- [ ] lexical scoping: ...
+- [ ] static typing: ...
+- [ ] include packages to import libraries
+- [ ] improve the library
