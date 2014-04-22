@@ -1,0 +1,14 @@
+Tue Apr 22 22:00:00 2014    Jesús Navarrete <jesus.navarrete@gmail.com>
+	* mlisp.c: create the first version of µlisp from the last version of the tutorial.
+
+	* created the first version of the ChangeLog file from the changes in the Readme.md file
+
+
+before… 	Jesús Navarrete <jesus.navarrete@gmail.com>
+
+	* conditionals.c: … 
+	* functions.c: …
+	* q_expressions.c: includes variables implementation
+	* s_expressions.c: …
+	* parsing.c: …
+	* prompt.c, polish_notation.c: 
