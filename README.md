@@ -1,28 +1,27 @@
 µLisp
 =====
 
-µLisp is Lisp interpreter using C. The idea started from the tutorial: [Build your own Lisp](http://buildyourownlisp.com).
+µLisp is Lisp interpreter using C. It is a personal implementation of list (look the *Story part*).
 
-For now, the implementation is more or less the same code as the tutorial. 
+It is possible to compile all the stuff running:
 
-I would like to extend the code after finish the tutorial, for now I am enjoying hacking with C and Lisp.
+```
+make all
+```
+or build only the µlisp interpreter with:
+```
+make mlisp
+```
+Future
+------
+Now the challenge is to continue creating more features for µLisp, some of them come from the las two chapters where there some ideas to continue with the implementations
 
-Jesús.
+I have finished the book and have some ideas for the next steps. Stay tuned!
 
-Release Changelog
------------------
+Story
+-----
+Behind of the µlisp's idea was the book: [Build your own Lisp](http://buildyourownlisp.com) from [Daniel Holden](https://github.com/orangeduck). The firsts release was following the tutorial. You can find a copy of the last version in [lispy.c](https://github.com/jenaiz/micro-lisp/blob/master/lispy.c) (I will be updating this file with the version from the book if there is an update).
 
-**v.0.0.5 (IN PROGRESS)**
+Have fun!
 
-**v.0.0.4**
-source: *q_expressions.c*
- - included variables 
-
-**v.0.0.3**
-source: *s_expressions.c*
-
-**v.0.0.2**
-source: *parsing.c*
-
-**v.0.0.1**
-source: *prompt.c, polish_notation.c*
+Jesús
