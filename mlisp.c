@@ -31,7 +31,7 @@
 
 void init() {
   puts("µLisp v0.0.9");
-  puts("Ctrl + c to exit.");
+  puts("Use \"exit\" or Ctrl-C to exit");
 }
 
 /* Parser Declarations */
@@ -884,7 +884,10 @@ int main(int argc, char** argv) {
       add_history(input);
       
       mpc_result_t r;
-      if (mpc_parse("<stdin>", input, Microlisp, &r)) {
+      
+      if (strcmp(input, "exit") == 0) {               
+        break;
+      } else if (mpc_parse("<stdin>", input, Microlisp, &r)) {
         
         lval* x = lval_eval(e, lval_read(r.output));
         lval_println(x);
