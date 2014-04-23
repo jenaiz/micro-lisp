@@ -13,7 +13,7 @@ all: clean $(SOURCES) mlisp
 	$(CC) $(CFLAGS) $^ $(LIBS) $(LFLAGS) -o bin/$@
 	
 mlisp:
-	$(CC) $(CFLAGS) strings.c $(LIBS) $(LFLAGS) -o mlisp
+	$(CC) $(CFLAGS) mlisp.c $(LIBS) $(LFLAGS) -o mlisp
 
 clean:
 	rm -rf bin
