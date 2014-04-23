@@ -6,7 +6,7 @@
 - [X] read chapters 16
 - [ ] extract a library from the big file ??
 - [ ] prompt:
-	- [ ] exit command
+	- [X] exit command
 	- [ ] help command
 	- [ ] read more than one line for code
 
