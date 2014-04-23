@@ -895,7 +895,9 @@ int main(int argc, char** argv) {
       
       mpc_result_t r;
       
-      if (strcmp(input, "exit") == 0) {               
+      if (strcmp(input, "") == 0) {
+        continue;
+      } else if (strcmp(input, "exit") == 0) {               
         break;
       } else if (mpc_parse("<stdin>", input, Microlisp, &r)) {
         
