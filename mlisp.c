@@ -844,6 +844,16 @@ lval* lval_read(mpc_ast_t* t) {
   return x;
 }
 
+void help() {
+  puts("Usage: mlisp [file...]");
+  /*
+  puts("-c              check syntax only");
+  puts("-d              set debugging flags (set $DEBUG to true)");
+  puts("-v              print version number, then turn on verbose mode\n");
+  puts("-h              show this message, --help for more info\n");
+  */
+}
+
 int main(int argc, char** argv) {  
 
   /* Create Some Parsers */
