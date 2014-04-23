@@ -34,7 +34,7 @@ void init() {
   puts("Ctrl + c to exit.");
 }
 
-/* Parser Declariations */
+/* Parser Declarations */
 
 mpc_parser_t* Number; 
 mpc_parser_t* Symbol; 
