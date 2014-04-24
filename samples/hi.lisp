@@ -1,1 +1,3 @@
+#!../mlisp
+
 (print "hello world")
