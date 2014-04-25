@@ -13,7 +13,13 @@
 - [ ] investigate more about parsers
 - [ ] improve how the enviroment works
 
-- [ ] add natives types: double... and operations for those types
+- [ ] extend parsing and evaluation to support natives types: double... and operations for those types
+ 
+- [ ] extend parsing and evaluation to support % operator: % -> sample % 10 6 is 4.
+- [ ] add operator: ^ -> sample ^ 4 2 is 16
+- [ ] add builtin function min 1 5 3 is 1
+- [ ] add builtin function max 1 5 3 is 5
+- [ ] add sample - 4 is -4 (negative number)
 - [ ] add user defined types
 - [ ] create list using square brackets: []
 - [ ] Integration with system operative:
@@ -28,3 +34,8 @@
 - [ ] static typing: ...
 - [ ] include packages to import libraries
 - [ ] improve the library
+
+
+
+
+
