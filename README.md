@@ -35,19 +35,20 @@ Some normal operations using [polish notation](http://en.wikipedia.org/wiki/Poli
 (+ 4 (* 24 5)
 ```
 
-You could define things, like nil (that it is not a builtin type):
+You could define things, like ```nil``` (that it is not a *builtin* type):
 
 ```lisp
 (def {nil} {})
 ```
 
-or *true* and *false*:
+or ```true``` and ```false```:
 
 ```lisp
 (def {true} 1)
 (def {false} 0)
 ```
 
+The project include a library ([preluce.lisp](https://github.com/jenaiz/micro-lisp/blob/master/libs/prelude.lisp)) with more examples to use and play with them.
 
 Future
 ------
