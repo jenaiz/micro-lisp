@@ -1,9 +1,3 @@
-- [x] read chapters 11
-- [X] read chapters 12
-- [X] read chapters 13
-- [X] read chapters 14
-- [X] read chapters 15
-- [X] read chapters 16
 - [ ] extract a library from the big file ??
 - [ ] prompt:
 	- [X] exit command
@@ -28,7 +22,7 @@
 - [ ] define macros
 - [ ] include an implementation of hashtable
 - [ ] pool allocation: allocate memory in the startup of the interpreter (avoid the uses of malloc in almost all the case)
-- [ ] garbage collection: introduce a simple algorithm for garbage collection: Mark & Sweep
+- [ ] garbage collection: introduce a simple algorithm for garbage collection: Mark & Sweep (perhaps use this [idea](http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/))
 - [ ] tail call optimisation: ...
 - [ ] lexical scoping: ...
 - [ ] static typing: ...
