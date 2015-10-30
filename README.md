@@ -60,7 +60,7 @@ Story
 -----
 Behind of the µlisp's idea was the book: [Build your own Lisp](http://buildyourownlisp.com) from [Daniel Holden](https://github.com/orangeduck). The firsts release was following the tutorial. You can find a copy of the last version in [lispy.c](https://github.com/jenaiz/micro-lisp/blob/master/lispy.c) (I will be updating this file with the version from the book if there is an update).
 
-The principle reason for writing µlisp was to enjoy hacking with C and discover Lisp.
+The principal reason for writing µlisp was to enjoy hacking with C and discover Lisp.
 
 Have fun!
 
