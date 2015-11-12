@@ -1,6 +1,6 @@
-;;;
-;;;   µLisp Standard Prelude (extract from lispy tutorial)
-;;;
+;
+;   µLisp Standard Prelude (extract from lispy tutorial)
+;
 
 ;;; Atoms
 (def {nil} {})
